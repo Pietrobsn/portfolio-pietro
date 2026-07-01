@@ -1318,16 +1318,18 @@ body::before {
   transform: rotate(-4deg) scale(1.06);
 }
 
-/* Reveal on scroll */
+/* Reveal on scroll: fade + translate + leve blur */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.65s cubic-bezier(0, 0, 0.2, 1), transform 0.65s cubic-bezier(0, 0, 0.2, 1);
+  filter: blur(7px);
+  transition: opacity 0.65s cubic-bezier(0, 0, 0.2, 1), transform 0.65s cubic-bezier(0, 0, 0.2, 1), filter 0.65s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: none;
+  filter: none;
 }
 
 .reveal--delay-1 { transition-delay: 0.08s; }
@@ -1399,6 +1401,215 @@ body::before {
   opacity: 1;
 }
 
+/* Ruído sutil por cima do fundo (textura, quase imperceptível) */
+body::after {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+}
+
+/* Barra de progresso da rolagem */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 200;
+  height: 2px;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* Destaque no título do hero */
+.hero__highlight {
+  color: var(--accent-strong);
+  text-shadow: 0 0 28px rgba(115, 168, 255, 0.45);
+}
+
+/* Palavras-chave destacadas no texto */
+.hl {
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+/* Navbar: indicador animado no link ativo (desktop) */
+@media (min-width: 841px) {
+  .nav__link {
+    position: relative;
+  }
+
+  .nav__link:not(.nav__link--contact)::after {
+    position: absolute;
+    right: 11px;
+    bottom: 3px;
+    left: 11px;
+    height: 1px;
+    content: "";
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav__link:not(.nav__link--contact):hover::after,
+  .nav__link.is-active:not(.nav__link--contact)::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Menu mobile: itens entram em cascata */
+@media (max-width: 840px) {
+  .nav__links li {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .nav__links.is-open li {
+    opacity: 1;
+    transform: none;
+  }
+
+  .nav__links.is-open li:nth-child(1) { transition-delay: 0.04s; }
+  .nav__links.is-open li:nth-child(2) { transition-delay: 0.08s; }
+  .nav__links.is-open li:nth-child(3) { transition-delay: 0.12s; }
+  .nav__links.is-open li:nth-child(4) { transition-delay: 0.16s; }
+  .nav__links.is-open li:nth-child(5) { transition-delay: 0.2s; }
+}
+
+/* Botão primário: reflexo (sheen) cruzando no hover */
+.button {
+  position: relative;
+  overflow: hidden;
+}
+
+.button--primary::after {
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 60%;
+  height: 100%;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.55s ease;
+}
+
+.button--primary:hover::after {
+  left: 170%;
+}
+
+/* Cards em destaque: borda iluminada que segue o cursor */
+.project-card--featured::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 1px;
+  content: "";
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(115, 168, 255, 0.65), transparent 60%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card--featured:hover::before {
+  opacity: 1;
+}
+
+/* Tags de tecnologia: microinteração no hover */
+.tech-list li {
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.tech-list li:hover {
+  border-color: rgba(115, 168, 255, 0.5);
+  background: rgba(115, 168, 255, 0.07);
+  color: var(--accent-strong);
+  transform: translateY(-2px);
+}
+
+/* Habilidades: barra decorativa cresce ao entrar na tela */
+.skill-group h3 {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.skill-group h3::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, var(--accent), transparent);
+  transition: width 0.7s cubic-bezier(0, 0, 0.2, 1) 0.35s;
+}
+
+.skill-group.is-visible h3::after {
+  width: 48px;
+}
+
+.skill-group__number {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s ease;
+}
+
+.skill-group:hover .skill-group__number {
+  color: var(--accent-strong);
+  transform: translateX(4px);
+}
+
+/* Formação: marcador de linha do tempo */
+.education-row__year {
+  position: relative;
+  padding-left: 20px;
+}
+
+.education-row__year::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  content: "";
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(115, 168, 255, 0.7);
+  transform: translateY(-50%);
+}
+
+.education-row {
+  transition: border-color 0.25s ease;
+}
+
+.education-row:hover {
+  border-color: rgba(115, 168, 255, 0.4);
+}
+
+/* Contato: glow na cor de cada rede */
+.contact-list a { --brand: 115, 168, 255; }
+.contact-list a:nth-child(1) { --brand: 37, 211, 102; }
+.contact-list a:nth-child(2) { --brand: 115, 168, 255; }
+.contact-list a:nth-child(3) { --brand: 205, 213, 224; }
+.contact-list a:nth-child(4) { --brand: 10, 102, 194; }
+
+.contact-list a::after {
+  background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), rgba(var(--brand), 0.14), transparent 62%);
+}
+
+.contact-list a:hover {
+  border-color: rgba(var(--brand), 0.45);
+  color: rgb(var(--brand));
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1416,6 +1627,11 @@ body::before {
   .reveal {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
+  }
+
+  .skill-group h3::after {
+    width: 48px;
   }
 
   .hero__particles {
