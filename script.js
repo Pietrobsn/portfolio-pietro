@@ -8,8 +8,13 @@
   const dotLinks = [...document.querySelectorAll('.section-dots a')];
   const sections = [...document.querySelectorAll('main section[id]')];
 
+  /* prefersReduced desliga animações autônomas (reveals, typing,
+     parallax de scroll). Efeitos guiados pelo cursor — galáxia,
+     constelação, tilt, glows — rodam sempre que houver mouse:
+     são resposta direta ao input do usuário, não movimento
+     espontâneo da página. */
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const finePointer = window.matchMedia('(any-hover: hover) and (any-pointer: fine)').matches;
 
   const closeMenu = () => {
     if (!navToggle || !navLinks) return;
@@ -240,7 +245,7 @@
   }
 
   /* ── Botões com leve efeito magnético ──────────────────────── */
-  if (!prefersReduced && finePointer) {
+  if (finePointer) {
     document.querySelectorAll('.button--primary, .button--secondary').forEach((btn) => {
       btn.addEventListener('mousemove', (event) => {
         const rect = btn.getBoundingClientRect();
@@ -255,7 +260,7 @@
   }
 
   /* ── Tilt 3D sutil nos cards em destaque ───────────────────── */
-  if (!prefersReduced && finePointer) {
+  if (finePointer) {
     document.querySelectorAll('.project-card--featured').forEach((card) => {
       let tiltRaf = null;
 
@@ -336,9 +341,11 @@
   /* ══════════════════════════════════════════════════════════
      GALÁXIA GLOBAL — estrelas orbitando o cursor + rastro de
      poeira estelar, na página inteira. Canvas fixo, atrás do
-     header, pointer-events: none. Desktop apenas.
+     header, pointer-events: none. Desktop apenas. Roda mesmo
+     com reduced-motion: só existe onde o cursor está — é
+     resposta ao movimento do próprio usuário.
   ══════════════════════════════════════════════════════════ */
-  if (!prefersReduced && finePointer) {
+  if (finePointer) {
     const galaxy = document.getElementById('galaxyCanvas');
 
     if (galaxy) {
@@ -456,10 +463,11 @@
   /* ══════════════════════════════════════════════════════════
      CONSTELAÇÃO DE PARTÍCULAS — segue o cursor no hero.
      Canvas leve, atrás do conteúdo, pointer-events: none.
-     Desativado sob prefers-reduced-motion e em telas touch
-     (economia de bateria/CPU no mobile).
+     Desativado em telas touch (economia de bateria/CPU).
+     Com reduced-motion as partículas ficam paradas (sem deriva
+     própria), mas ainda reagem ao cursor — interação direta.
   ══════════════════════════════════════════════════════════ */
-  if (!prefersReduced && finePointer) {
+  if (finePointer) {
     const canvas = document.getElementById('heroParticles');
     const hero = document.querySelector('.hero');
 
@@ -486,6 +494,8 @@
         buildParticles();
       }
 
+      const drift = prefersReduced ? 0 : 1;
+
       function buildParticles() {
         const count = Math.min(Math.round((width * height) / 11500), 110);
         particles = [];
@@ -493,8 +503,8 @@
           particles.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.34,
-            vy: (Math.random() - 0.5) * 0.34,
+            vx: (Math.random() - 0.5) * 0.34 * drift,
+            vy: (Math.random() - 0.5) * 0.34 * drift,
             r: Math.random() * 2 + 0.8
           });
         }

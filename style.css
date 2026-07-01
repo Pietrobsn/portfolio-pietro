@@ -2114,7 +2114,6 @@ body::after {
     transform: none !important;
   }
 
-  .galaxy-canvas,
   .hero__scroll-hint {
     display: none;
   }
@@ -2129,7 +2128,6 @@ body::after {
     width: 48px;
   }
 
-  .hero__particles,
   .hero__typing-caret {
     display: none;
   }
