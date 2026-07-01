@@ -147,6 +147,7 @@ ul {
 .header.is-scrolled {
   border-color: var(--border);
   background: rgba(8, 10, 15, 0.94);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.4);
 }
 
 .nav {
@@ -1321,15 +1322,29 @@ body::before {
 /* Reveal on scroll: fade + translate + leve blur */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  filter: blur(7px);
-  transition: opacity 0.65s cubic-bezier(0, 0, 0.2, 1), transform 0.65s cubic-bezier(0, 0, 0.2, 1), filter 0.65s cubic-bezier(0, 0, 0.2, 1);
+  transform: translateY(34px);
+  filter: blur(10px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1), filter 0.75s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: none;
   filter: none;
+}
+
+/* Variante com scale + flash de glow (perfil e cards em destaque) */
+.reveal--pop {
+  transform: translateY(34px) scale(0.955);
+}
+
+.reveal--pop.is-visible {
+  animation: pop-glow 1.3s ease 0.25s;
+}
+
+@keyframes pop-glow {
+  0%, 100% { box-shadow: 0 0 0 rgba(115, 168, 255, 0); }
+  45% { box-shadow: 0 18px 60px rgba(115, 168, 255, 0.24); }
 }
 
 .reveal--delay-1 { transition-delay: 0.08s; }
@@ -1417,17 +1432,184 @@ body::after {
   position: fixed;
   inset: 0 0 auto;
   z-index: 200;
-  height: 2px;
+  height: 3px;
   pointer-events: none;
   background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+  box-shadow: 0 0 12px rgba(115, 168, 255, 0.55);
   transform: scaleX(0);
   transform-origin: left;
+  transition: transform 120ms linear;
 }
 
-/* Destaque no título do hero */
+/* Navegação lateral por seções (desktop) */
+.section-dots {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transform: translateY(-50%);
+}
+
+.section-dots a {
+  width: 18px;
+  height: 18px;
+  padding: 5px;
+  border-radius: 50%;
+  background: var(--border-strong);
+  background-clip: content-box;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.section-dots a:hover {
+  background: var(--accent);
+  transform: scale(1.4);
+}
+
+.section-dots a.is-active {
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(115, 168, 255, 0.8);
+  transform: scale(1.45);
+}
+
+@media (max-width: 1099px) {
+  .section-dots {
+    display: none;
+  }
+}
+
+/* Aurora: blobs de luz fixos, deriva bem lenta */
+.bg-aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg-aurora span {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.bg-aurora span:nth-child(1) {
+  top: -18%;
+  left: -12%;
+  width: 640px;
+  height: 640px;
+  background: radial-gradient(circle, rgba(75, 126, 212, 0.16), transparent 65%);
+  animation: aurora-a 26s ease-in-out infinite;
+}
+
+.bg-aurora span:nth-child(2) {
+  right: -14%;
+  bottom: -22%;
+  width: 720px;
+  height: 720px;
+  background: radial-gradient(circle, rgba(45, 91, 188, 0.14), transparent 65%);
+  animation: aurora-b 32s ease-in-out infinite;
+}
+
+@keyframes aurora-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(70px, 50px) scale(1.12); }
+}
+
+@keyframes aurora-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-64px, -46px) scale(1.1); }
+}
+
+/* Blobs decorativos por seção (parallax no scroll) */
+.section {
+  position: relative;
+  overflow: hidden;
+  overflow: clip;
+}
+
+.section-blob {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  pointer-events: none;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.section-blob--left {
+  top: -120px;
+  left: -180px;
+  background: radial-gradient(circle, rgba(115, 168, 255, 0.12), transparent 62%);
+}
+
+.section-blob--right {
+  top: 10%;
+  right: -200px;
+  background: radial-gradient(circle, rgba(75, 126, 212, 0.13), transparent 62%);
+}
+
+/* Destaque no título do hero: gradiente com brilho em movimento */
 .hero__highlight {
   color: var(--accent-strong);
-  text-shadow: 0 0 28px rgba(115, 168, 255, 0.45);
+  background: linear-gradient(100deg, var(--accent) 0%, var(--accent-strong) 32%, #e4efff 50%, var(--accent-strong) 68%, var(--accent) 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: highlight-shine 5.5s ease-in-out infinite;
+}
+
+@keyframes highlight-shine {
+  0%, 100% { background-position: 0% 0; }
+  50% { background-position: 100% 0; }
+}
+
+/* Título do hero: entrada palavra por palavra (spans criados via JS) */
+.word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(10px);
+  animation: word-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes word-in {
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* Linha com efeito de digitação */
+.hero__typing {
+  display: flex;
+  align-items: center;
+  min-height: 1.5em;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.hero__typing-prefix {
+  margin-right: 2px;
+  color: var(--accent);
+}
+
+.hero__typing-caret {
+  display: inline-block;
+  width: 8px;
+  height: 1.05em;
+  margin-left: 3px;
+  background: var(--accent);
+  animation: caret-blink 1.1s step-end infinite;
+}
+
+@keyframes caret-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 /* Palavras-chave destacadas no texto */
@@ -1481,13 +1663,14 @@ body::after {
   .nav__links.is-open li:nth-child(5) { transition-delay: 0.2s; }
 }
 
-/* Botão primário: reflexo (sheen) cruzando no hover */
+/* Botões: reflexo (sheen) cruzando no hover + glow de elevação */
 .button {
   position: relative;
   overflow: hidden;
 }
 
-.button--primary::after {
+.button--primary::after,
+.button--secondary::after {
   position: absolute;
   top: 0;
   left: -130%;
@@ -1500,8 +1683,54 @@ body::after {
   transition: left 0.55s ease;
 }
 
-.button--primary:hover::after {
+.button--secondary::after {
+  background: linear-gradient(90deg, transparent, rgba(115, 168, 255, 0.18), transparent);
+}
+
+.button--primary:hover::after,
+.button--secondary:hover::after {
   left: 170%;
+}
+
+.button--primary:hover {
+  box-shadow: 0 10px 34px rgba(115, 168, 255, 0.38);
+}
+
+.button--secondary:hover {
+  box-shadow: 0 10px 30px rgba(115, 168, 255, 0.14);
+}
+
+/* Títulos de seção: reveal com máscara ao entrar na tela */
+.section-heading.reveal h2,
+.contact-copy.reveal h2 {
+  clip-path: inset(-10% 100% -20% 0);
+  transition: clip-path 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+}
+
+.section-heading.reveal.is-visible h2,
+.contact-copy.reveal.is-visible h2 {
+  clip-path: inset(-10% -6% -20% 0);
+}
+
+/* Cards em destaque: borda pulsante + gradiente interno em movimento */
+@keyframes featured-pulse {
+  0%, 100% { border-color: var(--border-strong); }
+  50% { border-color: rgba(115, 168, 255, 0.42); }
+}
+
+@keyframes card-sheen {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+}
+
+.project-card--featured {
+  background-image: linear-gradient(130deg, rgba(115, 168, 255, 0.06) 0%, transparent 38%, transparent 62%, rgba(115, 168, 255, 0.04) 100%);
+  background-size: 220% 220%;
+  animation: featured-pulse 4.5s ease-in-out infinite, card-sheen 10s ease-in-out infinite;
+}
+
+.project-card--featured:hover {
+  animation-name: none, card-sheen;
 }
 
 /* Cards em destaque: borda iluminada que segue o cursor */
@@ -1567,6 +1796,39 @@ body::after {
   transform: translateX(4px);
 }
 
+.skill-group {
+  transition: background 0.3s ease;
+}
+
+.skill-group:hover {
+  background: rgba(115, 168, 255, 0.035);
+}
+
+/* Itens das habilidades: cascata dentro do grupo + hover vivo */
+.skill-group.reveal li {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.45s ease, transform 0.45s ease, color 0.2s ease;
+}
+
+.skill-group.reveal.is-visible li {
+  opacity: 1;
+  transform: none;
+}
+
+.skill-group.reveal.is-visible li:nth-child(1) { transition-delay: 0.25s, 0.25s, 0s; }
+.skill-group.reveal.is-visible li:nth-child(2) { transition-delay: 0.31s, 0.31s, 0s; }
+.skill-group.reveal.is-visible li:nth-child(3) { transition-delay: 0.37s, 0.37s, 0s; }
+.skill-group.reveal.is-visible li:nth-child(4) { transition-delay: 0.43s, 0.43s, 0s; }
+.skill-group.reveal.is-visible li:nth-child(5) { transition-delay: 0.49s, 0.49s, 0s; }
+.skill-group.reveal.is-visible li:nth-child(6) { transition-delay: 0.55s, 0.55s, 0s; }
+.skill-group.reveal.is-visible li:nth-child(7) { transition-delay: 0.61s, 0.61s, 0s; }
+.skill-group.reveal.is-visible li:nth-child(8) { transition-delay: 0.67s, 0.67s, 0s; }
+
+.skill-group li:hover {
+  color: var(--accent-strong);
+}
+
 /* Formação: marcador de linha do tempo */
 .education-row__year {
   position: relative;
@@ -1584,6 +1846,12 @@ body::after {
   background: var(--accent);
   box-shadow: 0 0 12px rgba(115, 168, 255, 0.7);
   transform: translateY(-50%);
+  animation: marker-pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes marker-pulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(115, 168, 255, 0.7), 0 0 0 0 rgba(115, 168, 255, 0.35); }
+  50% { box-shadow: 0 0 12px rgba(115, 168, 255, 0.7), 0 0 0 8px rgba(115, 168, 255, 0); }
 }
 
 .education-row {
@@ -1608,6 +1876,17 @@ body::after {
 .contact-list a:hover {
   border-color: rgba(var(--brand), 0.45);
   color: rgb(var(--brand));
+  box-shadow: inset 0 -1px 0 rgba(var(--brand), 0.4);
+}
+
+/* Seta dos contatos: desliza na diagonal no hover */
+.contact-list a > span[aria-hidden] {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-list a:hover > span[aria-hidden] {
+  transform: translate(4px, -4px);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1630,11 +1909,27 @@ body::after {
     filter: none !important;
   }
 
+  .reveal h2 {
+    clip-path: none !important;
+  }
+
+  .skill-group.reveal li {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .word {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
   .skill-group h3::after {
     width: 48px;
   }
 
-  .hero__particles {
+  .hero__particles,
+  .hero__typing-caret {
     display: none;
   }
 }

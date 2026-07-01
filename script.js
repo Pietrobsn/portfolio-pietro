@@ -5,6 +5,7 @@
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
   const navigationLinks = [...document.querySelectorAll('.nav__link')];
+  const dotLinks = [...document.querySelectorAll('.section-dots a')];
   const sections = [...document.querySelectorAll('main section[id]')];
 
   const closeMenu = () => {
@@ -84,6 +85,10 @@
         if (isCurrent) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');
       });
+
+      dotLinks.forEach((dot) => {
+        dot.classList.toggle('is-active', dot.getAttribute('href') === `#${visibleSection.target.id}`);
+      });
     }, {
       rootMargin: '-25% 0px -60% 0px',
       threshold: [0, 0.15, 0.4]
@@ -97,6 +102,86 @@
 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* ── Título do hero: entrada palavra por palavra ──────────── */
+  const heroTitle = document.getElementById('hero-title');
+  if (heroTitle && !prefersReduced) {
+    const tokens = [];
+    heroTitle.childNodes.forEach((node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        node.textContent.split(/\s+/).filter(Boolean).forEach((word) => {
+          if (/^[.,!?;:]+$/.test(word) && tokens.length) tokens[tokens.length - 1].suffix += word;
+          else tokens.push({ text: word, highlight: false, suffix: '' });
+        });
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        tokens.push({ text: node.textContent, highlight: true, suffix: '' });
+      }
+    });
+
+    heroTitle.classList.remove('reveal', 'reveal--delay-2');
+    heroTitle.textContent = '';
+    tokens.forEach((token, index) => {
+      const word = document.createElement('span');
+      word.className = 'word';
+      word.style.animationDelay = `${140 + index * 70}ms`;
+      if (token.highlight) {
+        const inner = document.createElement('span');
+        inner.className = 'hero__highlight';
+        inner.textContent = token.text;
+        word.appendChild(inner);
+        if (token.suffix) word.appendChild(document.createTextNode(token.suffix));
+      } else {
+        word.textContent = token.text + token.suffix;
+      }
+      heroTitle.appendChild(word);
+      if (index < tokens.length - 1) heroTitle.appendChild(document.createTextNode(' '));
+    });
+  }
+
+  /* ── Linha com efeito de digitação ────────────────────────── */
+  const typingEl = document.getElementById('typingText');
+  if (typingEl) {
+    const phrases = [
+      'Construindo sistemas web',
+      'Organizando operações reais',
+      'Criando painéis administrativos',
+      'Transformando rotinas em software'
+    ];
+
+    if (prefersReduced) {
+      typingEl.textContent = phrases[0];
+    } else {
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let erasing = false;
+
+      const tick = () => {
+        const phrase = phrases[phraseIndex];
+        if (!erasing) {
+          charIndex += 1;
+          typingEl.textContent = phrase.slice(0, charIndex);
+          if (charIndex === phrase.length) {
+            erasing = true;
+            setTimeout(tick, 2100);
+            return;
+          }
+          setTimeout(tick, 52);
+        } else {
+          charIndex -= 1;
+          typingEl.textContent = phrase.slice(0, charIndex);
+          if (charIndex === 0) {
+            erasing = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            setTimeout(tick, 320);
+            return;
+          }
+          setTimeout(tick, 26);
+        }
+      };
+
+      setTimeout(tick, 900);
+    }
+  }
 
   /* ── Scroll reveal ────────────────────────────────────────── */
   const revealTargets = [...document.querySelectorAll('.reveal')];
@@ -157,7 +242,7 @@
           const dx = (event.clientX - rect.left) / rect.width - 0.5;
           const dy = (event.clientY - rect.top) / rect.height - 0.5;
           card.style.transform =
-            `perspective(950px) rotateX(${(-dy * 3.5).toFixed(2)}deg) rotateY(${(dx * 3.5).toFixed(2)}deg) translateY(-3px)`;
+            `perspective(950px) rotateX(${(-dy * 5.5).toFixed(2)}deg) rotateY(${(dx * 5.5).toFixed(2)}deg) translateY(-4px)`;
           tiltRaf = null;
         });
       });
@@ -170,6 +255,31 @@
         card.style.transform = '';
       });
     });
+  }
+
+  /* ── Parallax de scroll nos blobs decorativos ──────────────── */
+  const parallaxEls = [...document.querySelectorAll('[data-parallax]')];
+  if (parallaxEls.length && !prefersReduced && finePointer) {
+    let parallaxQueued = false;
+
+    const updateParallax = () => {
+      const viewportCenter = window.innerHeight / 2;
+      parallaxEls.forEach((el) => {
+        const rect = el.parentElement.getBoundingClientRect();
+        if (rect.bottom < -100 || rect.top > window.innerHeight + 100) return;
+        const offset = (rect.top + rect.height / 2 - viewportCenter) * parseFloat(el.dataset.parallax);
+        el.style.transform = `translateY(${offset.toFixed(1)}px)`;
+      });
+      parallaxQueued = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!parallaxQueued) {
+        window.requestAnimationFrame(updateParallax);
+        parallaxQueued = true;
+      }
+    }, { passive: true });
+    updateParallax();
   }
 
   /* ══════════════════════════════════════════════════════════
@@ -190,8 +300,8 @@
       const mouse = { x: -9999, y: -9999, active: false };
       const smooth = { x: -9999, y: -9999 };
 
-      const LINK_DIST = 125;
-      const MOUSE_DIST = 200;
+      const LINK_DIST = 140;
+      const MOUSE_DIST = 220;
 
       function resize() {
         dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -206,15 +316,15 @@
       }
 
       function buildParticles() {
-        const count = Math.min(Math.round((width * height) / 15000), 90);
+        const count = Math.min(Math.round((width * height) / 11500), 110);
         particles = [];
         for (let i = 0; i < count; i += 1) {
           particles.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.25,
-            vy: (Math.random() - 0.5) * 0.25,
-            r: Math.random() * 1.6 + 0.6
+            vx: (Math.random() - 0.5) * 0.34,
+            vy: (Math.random() - 0.5) * 0.34,
+            r: Math.random() * 2 + 0.8
           });
         }
       }
@@ -238,7 +348,7 @@
 
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(115, 168, 255, 0.5)';
+          ctx.fillStyle = 'rgba(115, 168, 255, 0.65)';
           ctx.fill();
 
           for (let j = i + 1; j < particles.length; j += 1) {
@@ -250,7 +360,7 @@
               ctx.beginPath();
               ctx.moveTo(p.x, p.y);
               ctx.lineTo(q.x, q.y);
-              ctx.strokeStyle = `rgba(115, 168, 255, ${(1 - dist / LINK_DIST) * 0.16})`;
+              ctx.strokeStyle = `rgba(115, 168, 255, ${(1 - dist / LINK_DIST) * 0.22})`;
               ctx.lineWidth = 1;
               ctx.stroke();
             }
@@ -273,11 +383,20 @@
         }
 
         if (mouse.active) {
-          const grad = ctx.createRadialGradient(smooth.x, smooth.y, 0, smooth.x, smooth.y, 80);
-          grad.addColorStop(0, 'rgba(115, 168, 255, 0.16)');
+          /* Glow radial amplo acompanhando o cursor */
+          const ambient = ctx.createRadialGradient(smooth.x, smooth.y, 0, smooth.x, smooth.y, 320);
+          ambient.addColorStop(0, 'rgba(115, 168, 255, 0.08)');
+          ambient.addColorStop(1, 'rgba(115, 168, 255, 0)');
+          ctx.beginPath();
+          ctx.arc(smooth.x, smooth.y, 320, 0, Math.PI * 2);
+          ctx.fillStyle = ambient;
+          ctx.fill();
+
+          const grad = ctx.createRadialGradient(smooth.x, smooth.y, 0, smooth.x, smooth.y, 120);
+          grad.addColorStop(0, 'rgba(115, 168, 255, 0.2)');
           grad.addColorStop(1, 'rgba(115, 168, 255, 0)');
           ctx.beginPath();
-          ctx.arc(smooth.x, smooth.y, 80, 0, Math.PI * 2);
+          ctx.arc(smooth.x, smooth.y, 120, 0, Math.PI * 2);
           ctx.fillStyle = grad;
           ctx.fill();
         }
