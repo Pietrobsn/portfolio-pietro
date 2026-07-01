@@ -14,22 +14,24 @@ O site apresenta experiência prática com sistemas administrativos, rotinas com
 
 O site é feito em HTML, CSS e JavaScript puro, sem frameworks ou bibliotecas de animação. As animações, microinterações e efeitos (partículas no hero, reveal no scroll, glow seguindo o cursor, tilt nos cards e barra de progresso) são implementados com CSS moderno e JavaScript leve, respeitando `prefers-reduced-motion` e com efeitos pesados desativados em telas touch.
 
-## Projetos em destaque
+## Projetos selecionados
+
+Esta é uma seleção pública de recortes demonstrativos, landings e projetos que ajudam a avaliar minha prática com sistemas web, SaaS, painéis administrativos e fluxos operacionais.
 
 ### Barber Cloud
 
-Sistema para barbearias com foco em agendamento online, página própria, escolha de serviço, barbeiro e horário, além de painel administrativo privado.
+Sistema para barbearias com foco em agendamento online, página própria, escolha de serviço, barbeiro e horário, além de painel administrativo.
 
-Produto comercial privado. A landing pública apresenta a proposta do projeto, enquanto o repositório demo mostra uma versão segura e reduzida para avaliação técnica.
+Landing pública disponível e repositório demonstrativo criado para avaliação técnica.
 
 - [Ver landing](https://barbercloud.netlify.app)
 - [Ver GitHub demo](https://github.com/Pietrobsn/barber-cloud-demo)
 
 ### Comanda
 
-Sistema para restaurantes, pizzarias e delivery, com foco em pedidos, comandas, cardápio, caixa, estoque, entregadores e operação diária.
+Sistema para restaurantes, pizzarias e delivery, com foco em pedidos, comandas, cardápio, caixa, estoque, entregadores e rotina operacional.
 
-Produto comercial privado. A versão pública é apenas uma demo reduzida e segura para portfólio.
+Versão pública demonstrativa disponível no GitHub, criada para apresentar parte da experiência visual e operacional do sistema.
 
 - [Ver GitHub demo](https://github.com/Pietrobsn/comanda-demo)
 
@@ -37,11 +39,15 @@ Produto comercial privado. A versão pública é apenas uma demo reduzida e segu
 
 Sistema web operacional desenvolvido para academia real, com controle de caixa, folha de pagamento, planos, relatórios e rotinas administrativas.
 
-O código é privado por se tratar de um projeto comercial real.
+Projeto comercial real citado como parte da experiência prática com sistemas administrativos.
 
 ### APIForge
 
 Projeto em desenvolvimento para criação e organização de APIs, endpoints CRUD e backends simulados.
+
+### Portfolio Pietro
+
+Portfólio público em HTML, CSS e JavaScript, com foco em apresentação profissional, performance, SEO, responsividade e interações leves.
 
 ## Como executar localmente
 
