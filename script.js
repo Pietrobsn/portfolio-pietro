@@ -48,9 +48,16 @@
     });
   }
 
+  const progressBar = document.getElementById('scrollProgress');
+
   let scrollQueued = false;
   const updateHeader = () => {
     header?.classList.toggle('is-scrolled', window.scrollY > 16);
+    if (progressBar) {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+      progressBar.style.transform = `scaleX(${ratio.toFixed(4)})`;
+    }
     scrollQueued = false;
   };
 
@@ -60,6 +67,7 @@
       scrollQueued = true;
     }
   }, { passive: true });
+  window.addEventListener('resize', updateHeader);
   updateHeader();
 
   if ('IntersectionObserver' in window && sections.length) {
@@ -88,6 +96,7 @@
   if (currentYear) currentYear.textContent = String(new Date().getFullYear());
 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   /* ── Scroll reveal ────────────────────────────────────────── */
   const revealTargets = [...document.querySelectorAll('.reveal')];
@@ -108,19 +117,21 @@
   }
 
   /* ── Glow que segue o cursor nos cards ────────────────────── */
-  const glowTargets = document.querySelectorAll(
-    '.project-card, .skill-group, .education-row, .contact-list a, .profile-summary'
-  );
-  glowTargets.forEach((el) => {
-    el.addEventListener('mousemove', (event) => {
-      const rect = el.getBoundingClientRect();
-      el.style.setProperty('--mx', `${event.clientX - rect.left}px`);
-      el.style.setProperty('--my', `${event.clientY - rect.top}px`);
+  if (finePointer) {
+    const glowTargets = document.querySelectorAll(
+      '.project-card, .skill-group, .education-row, .contact-list a, .profile-summary'
+    );
+    glowTargets.forEach((el) => {
+      el.addEventListener('mousemove', (event) => {
+        const rect = el.getBoundingClientRect();
+        el.style.setProperty('--mx', `${event.clientX - rect.left}px`);
+        el.style.setProperty('--my', `${event.clientY - rect.top}px`);
+      }, { passive: true });
     });
-  });
+  }
 
   /* ── Botões com leve efeito magnético ──────────────────────── */
-  if (!prefersReduced) {
+  if (!prefersReduced && finePointer) {
     document.querySelectorAll('.button--primary, .button--secondary').forEach((btn) => {
       btn.addEventListener('mousemove', (event) => {
         const rect = btn.getBoundingClientRect();
@@ -134,12 +145,40 @@
     });
   }
 
+  /* ── Tilt 3D sutil nos cards em destaque ───────────────────── */
+  if (!prefersReduced && finePointer) {
+    document.querySelectorAll('.project-card--featured').forEach((card) => {
+      let tiltRaf = null;
+
+      card.addEventListener('mousemove', (event) => {
+        if (tiltRaf) return;
+        tiltRaf = window.requestAnimationFrame(() => {
+          const rect = card.getBoundingClientRect();
+          const dx = (event.clientX - rect.left) / rect.width - 0.5;
+          const dy = (event.clientY - rect.top) / rect.height - 0.5;
+          card.style.transform =
+            `perspective(950px) rotateX(${(-dy * 3.5).toFixed(2)}deg) rotateY(${(dx * 3.5).toFixed(2)}deg) translateY(-3px)`;
+          tiltRaf = null;
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        if (tiltRaf) {
+          window.cancelAnimationFrame(tiltRaf);
+          tiltRaf = null;
+        }
+        card.style.transform = '';
+      });
+    });
+  }
+
   /* ══════════════════════════════════════════════════════════
      CONSTELAÇÃO DE PARTÍCULAS — segue o cursor no hero.
      Canvas leve, atrás do conteúdo, pointer-events: none.
-     Desativado sob prefers-reduced-motion.
+     Desativado sob prefers-reduced-motion e em telas touch
+     (economia de bateria/CPU no mobile).
   ══════════════════════════════════════════════════════════ */
-  if (!prefersReduced) {
+  if (!prefersReduced && finePointer) {
     const canvas = document.getElementById('heroParticles');
     const hero = document.querySelector('.hero');
 

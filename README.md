@@ -12,6 +12,8 @@ O site apresenta experiência prática com sistemas administrativos, rotinas com
 - Node.js para servidor local e verificações
 - Git e GitHub
 
+O site é feito em HTML, CSS e JavaScript puro, sem frameworks ou bibliotecas de animação. As animações, microinterações e efeitos (partículas no hero, reveal no scroll, glow seguindo o cursor, tilt nos cards e barra de progresso) são implementados com CSS moderno e JavaScript leve, respeitando `prefers-reduced-motion` e com efeitos pesados desativados em telas touch.
+
 ## Projetos em destaque
 
 ### Barber Cloud
