@@ -57,6 +57,7 @@ body::before {
     linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
   background-size: 72px 72px;
+  background-position: 0 var(--grid-shift, 0px);
   mask-image: linear-gradient(to bottom, #000, transparent 65%);
 }
 
@@ -1333,6 +1334,15 @@ body::before {
   filter: none;
 }
 
+/* Variantes direcionais: entram pela lateral */
+.reveal--left {
+  transform: translateX(-60px);
+}
+
+.reveal--right {
+  transform: translateX(60px);
+}
+
 /* Variante com scale + flash de glow (perfil e cards em destaque) */
 .reveal--pop {
   transform: translateY(34px) scale(0.955);
@@ -1480,6 +1490,53 @@ body::after {
   }
 }
 
+/* Galáxia global: estrelas orbitando e rastro de poeira seguindo o cursor.
+   Acima do conteúdo (pointer-events: none), abaixo do header. */
+.galaxy-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+
+@media (max-width: 840px) {
+  .galaxy-canvas {
+    display: none;
+  }
+}
+
+/* Hint de scroll no hero */
+.hero__scroll-hint {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  animation: hint-float 2.4s ease-in-out infinite;
+  transition: opacity 0.4s ease;
+}
+
+@keyframes hint-float {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+  50% { transform: translateX(-50%) translateY(7px); opacity: 1; }
+}
+
+.hero.is-scrolled .hero__scroll-hint {
+  opacity: 0;
+}
+
+@media (max-width: 840px) {
+  .hero__scroll-hint {
+    display: none;
+  }
+}
+
 /* Aurora: blobs de luz fixos, deriva bem lenta */
 .bg-aurora {
   position: fixed;
@@ -1499,7 +1556,7 @@ body::after {
   left: -12%;
   width: 640px;
   height: 640px;
-  background: radial-gradient(circle, rgba(75, 126, 212, 0.16), transparent 65%);
+  background: radial-gradient(circle, rgba(75, 126, 212, 0.22), transparent 65%);
   animation: aurora-a 26s ease-in-out infinite;
 }
 
@@ -1508,7 +1565,7 @@ body::after {
   bottom: -22%;
   width: 720px;
   height: 720px;
-  background: radial-gradient(circle, rgba(45, 91, 188, 0.14), transparent 65%);
+  background: radial-gradient(circle, rgba(45, 91, 188, 0.19), transparent 65%);
   animation: aurora-b 32s ease-in-out infinite;
 }
 
@@ -1529,6 +1586,12 @@ body::after {
   overflow: clip;
 }
 
+/* Conteúdo sempre acima das decorações absolutas */
+.section > .container {
+  position: relative;
+  z-index: 1;
+}
+
 .section-blob {
   position: absolute;
   width: 520px;
@@ -1536,6 +1599,120 @@ body::after {
   pointer-events: none;
   border-radius: 50%;
   will-change: transform;
+}
+
+/* Formas geométricas flutuantes */
+.section-deco {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.deco-shape {
+  position: absolute;
+  fill: none;
+  stroke: rgba(115, 168, 255, 0.45);
+  stroke-width: 1.5;
+  opacity: 0.55;
+}
+
+.deco-shape--tri {
+  top: 14%;
+  right: 3%;
+  width: 60px;
+  animation: floaty 9s ease-in-out infinite;
+}
+
+.deco-shape--circle {
+  bottom: 12%;
+  left: 2%;
+  width: 86px;
+  animation: floaty 12s ease-in-out infinite reverse;
+}
+
+.deco-shape--plus {
+  top: 60%;
+  right: 7%;
+  width: 38px;
+  animation: spin-slow 26s linear infinite;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-24px) rotate(12deg); }
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+/* Anéis orbitais na formação */
+.deco-ring {
+  position: absolute;
+  border: 1px dashed rgba(115, 168, 255, 0.22);
+  border-radius: 50%;
+}
+
+.deco-ring--1 {
+  top: -150px;
+  right: -90px;
+  width: 400px;
+  height: 400px;
+  animation: spin-slow 42s linear infinite;
+}
+
+.deco-ring--2 {
+  top: -70px;
+  right: 10px;
+  width: 230px;
+  height: 230px;
+  border-style: solid;
+  border-color: rgba(115, 168, 255, 0.15);
+  animation: spin-slow 30s linear infinite reverse;
+}
+
+/* Vaga-lumes: pontos de luz subindo nas habilidades */
+.rising-dots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.rising-dots span {
+  position: absolute;
+  bottom: -10px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(115, 168, 255, 0.6);
+  box-shadow: 0 0 8px rgba(115, 168, 255, 0.55);
+  animation-name: rise-up;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rise-up {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  8% { opacity: 0.9; }
+  85% { opacity: 0.9; }
+  100% { transform: translateY(-660px) scale(0.5); opacity: 0; }
+}
+
+.rising-dots span:nth-child(1) { left: 7%;  animation-duration: 9s;  animation-delay: 0s; }
+.rising-dots span:nth-child(2) { left: 19%; animation-duration: 12s; animation-delay: 2.2s; }
+.rising-dots span:nth-child(3) { left: 31%; animation-duration: 8s;  animation-delay: 4s; }
+.rising-dots span:nth-child(4) { left: 44%; animation-duration: 11s; animation-delay: 1s; }
+.rising-dots span:nth-child(5) { left: 57%; animation-duration: 9s;  animation-delay: 3.4s; }
+.rising-dots span:nth-child(6) { left: 69%; animation-duration: 13s; animation-delay: 0.6s; }
+.rising-dots span:nth-child(7) { left: 81%; animation-duration: 10s; animation-delay: 2.8s; }
+.rising-dots span:nth-child(8) { left: 91%; animation-duration: 8s;  animation-delay: 5s; }
+
+@media (max-width: 1099px) {
+  .section-deco,
+  .rising-dots {
+    display: none;
+  }
 }
 
 .section-blob--left {
@@ -1759,6 +1936,24 @@ body::after {
   transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, background 0.2s ease;
 }
 
+/* Tags dos cards em destaque: entram em cascata */
+.project-card--featured.reveal .tech-list li {
+  opacity: 0;
+  transform: translateY(10px) scale(0.9);
+  transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.project-card--featured.reveal.is-visible .tech-list li {
+  opacity: 1;
+  transform: none;
+}
+
+.project-card--featured.reveal.is-visible .tech-list li:nth-child(1) { transition-delay: 0.4s, 0.4s, 0s, 0s, 0s; }
+.project-card--featured.reveal.is-visible .tech-list li:nth-child(2) { transition-delay: 0.47s, 0.47s, 0s, 0s, 0s; }
+.project-card--featured.reveal.is-visible .tech-list li:nth-child(3) { transition-delay: 0.54s, 0.54s, 0s, 0s, 0s; }
+.project-card--featured.reveal.is-visible .tech-list li:nth-child(4) { transition-delay: 0.61s, 0.61s, 0s, 0s, 0s; }
+.project-card--featured.reveal.is-visible .tech-list li:nth-child(5) { transition-delay: 0.68s, 0.68s, 0s, 0s, 0s; }
+
 .tech-list li:hover {
   border-color: rgba(115, 168, 255, 0.5);
   background: rgba(115, 168, 255, 0.07);
@@ -1913,9 +2108,14 @@ body::after {
     clip-path: none !important;
   }
 
-  .skill-group.reveal li {
+  .skill-group.reveal li,
+  .project-card--featured.reveal .tech-list li {
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  .hero__scroll-hint {
+    display: none;
   }
 
   .word {
@@ -1928,7 +2128,6 @@ body::after {
     width: 48px;
   }
 
-  .hero__particles,
   .hero__typing-caret {
     display: none;
   }

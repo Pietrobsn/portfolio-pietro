@@ -27,6 +27,8 @@
     <span></span>
   </div>
 
+  <canvas class="galaxy-canvas" id="galaxyCanvas" aria-hidden="true"></canvas>
+
   <nav class="section-dots" aria-label="Navegação entre seções">
     <a href="#inicio" aria-label="Início"></a>
     <a href="#sobre" aria-label="Sobre"></a>
@@ -78,6 +80,13 @@
           </div>
         </div>
 
+        <div class="hero__scroll-hint" aria-hidden="true">
+          <span class="mono">scroll</span>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
         <aside class="profile-summary reveal reveal--pop reveal--delay-4" aria-label="Resumo do perfil">
           <div class="profile-summary__header">
             <span class="mono">PERFIL / 30 SEGUNDOS</span>
@@ -106,6 +115,11 @@
     </section>
 
     <section class="section" id="sobre" aria-labelledby="sobre-title">
+      <div class="section-deco" data-parallax="0.16" aria-hidden="true">
+        <svg class="deco-shape deco-shape--tri" viewBox="0 0 100 100"><polygon points="50,10 90,86 10,86"/></svg>
+        <svg class="deco-shape deco-shape--circle" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40"/></svg>
+        <svg class="deco-shape deco-shape--plus" viewBox="0 0 100 100"><path d="M50 22v56M22 50h56"/></svg>
+      </div>
       <div class="container">
         <header class="section-heading section-heading--split reveal">
           <div>
@@ -115,7 +129,7 @@
           <p>Tenho 17 anos, estudo Análise e Desenvolvimento de Sistemas e desenvolvo aplicações web voltadas para rotinas comerciais. Gosto de organizar processos, criar <span class="hl">painéis administrativos</span>, <span class="hl">automatizar tarefas</span> e transformar necessidades de operação em sistemas simples de usar.</p>
         </header>
 
-        <div class="about-strip reveal reveal--delay-1">
+        <div class="about-strip reveal reveal--left reveal--delay-1">
           <p>Busco uma oportunidade inicial na área de tecnologia para evoluir em equipe, aprender com projetos reais e contribuir com <span class="hl">desenvolvimento web</span>, <span class="hl">banco de dados</span>, suporte técnico e manutenção de sistemas.</p>
           <dl class="about-facts">
             <div><dt class="mono">4+</dt><dd>projetos desenvolvidos</dd></div>
@@ -176,8 +190,8 @@
           </article>
         </div>
 
-        <div class="secondary-projects reveal reveal--delay-2" aria-label="Outros projetos">
-          <article class="project-row">
+        <div class="secondary-projects" aria-label="Outros projetos">
+          <article class="project-row reveal reveal--left">
             <div class="project-row__identity">
               <span class="project-card__number mono">PROJETO 03</span>
               <div><h3>Folha Superação</h3><p>Sistema para Academia</p></div>
@@ -189,7 +203,7 @@
             <span class="status status--private">Código privado</span>
           </article>
 
-          <article class="project-row">
+          <article class="project-row reveal reveal--right reveal--delay-1">
             <div class="project-row__identity">
               <span class="project-card__number mono">PROJETO 04</span>
               <div><h3>APIForge</h3><p>Organização de APIs</p></div>
@@ -206,6 +220,10 @@
 
     <section class="section" id="habilidades" aria-labelledby="habilidades-title">
       <div class="section-blob section-blob--right" data-parallax="0.11" aria-hidden="true"></div>
+      <div class="rising-dots" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
       <div class="container">
         <header class="section-heading section-heading--compact reveal">
           <p class="section-index mono">03 / HABILIDADES</p>
@@ -243,13 +261,17 @@
     </section>
 
     <section class="section section--education" id="formacao" aria-labelledby="formacao-title">
+      <div class="section-deco" data-parallax="0.1" aria-hidden="true">
+        <span class="deco-ring deco-ring--1"></span>
+        <span class="deco-ring deco-ring--2"></span>
+      </div>
       <div class="container">
         <header class="section-heading section-heading--compact reveal">
           <p class="section-index mono">04 / FORMAÇÃO</p>
           <h2 id="formacao-title">Formação acadêmica.</h2>
         </header>
 
-        <article class="education-row reveal reveal--delay-1">
+        <article class="education-row reveal reveal--left reveal--delay-1">
           <div class="education-row__year mono">2026 →</div>
           <div class="education-row__content">
             <h3>Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
@@ -265,13 +287,13 @@
 
     <section class="section section--contact" id="contato" aria-labelledby="contato-title">
       <div class="container contact-layout">
-        <div class="contact-copy reveal">
+        <div class="contact-copy reveal reveal--left">
           <p class="section-index mono">05 / CONTATO</p>
           <h2 id="contato-title">Aberto a oportunidades para começar e evoluir em equipe.</h2>
           <p>Busco estágio ou oportunidade inicial em Desenvolvimento Web ou TI. Posso contribuir com desenvolvimento, banco de dados, suporte técnico e manutenção de sistemas.</p>
         </div>
 
-        <div class="contact-list reveal reveal--delay-1">
+        <div class="contact-list reveal reveal--right reveal--delay-1">
           <a href="https://wa.me/5581982977975" target="_blank" rel="noopener noreferrer">
             <span class="contact-list__label mono">WHATSAPP</span>
             <strong>+55 (81) 98297-7975</strong>
