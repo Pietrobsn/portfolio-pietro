@@ -1,0 +1,14 @@
+{
+  "name": "vitor-pietro-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfólio pessoal de Vitor Pietro, desenvolvedor web em formação.",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "check": "node --check script.js && node check.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

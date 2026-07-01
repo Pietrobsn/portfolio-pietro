@@ -1,471 +1,291 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Vitor Pietro — Estudante de ADS em busca de estágio em desenvolvimento web. Desenvolvo sistemas web reais: SaaS, painéis administrativos e aplicações para operação comercial." />
-  <title>Vitor Pietro — Desenvolvimento Web & TI</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfólio de Vitor Pietro, estudante de ADS e desenvolvedor web em formação, com projetos de sistemas administrativos, SaaS, SQL, JavaScript e automação.">
+  <meta name="theme-color" content="#080a0f">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Vitor Pietro | Desenvolvedor Web">
+  <meta property="og:description" content="Estudante de ADS e desenvolvedor web em formação, com projetos de sistemas administrativos, SaaS, SQL, JavaScript e automação.">
+  <meta property="og:site_name" content="Portfólio de Vitor Pietro">
+  <title>Vitor Pietro | Desenvolvedor Web</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-  <!-- ═══════════════════════════════════════════ HEADER -->
   <header class="header" id="top">
-    <nav class="nav container">
-      <a href="#top" class="nav__logo">
-        <span class="nav__logo-mark">VP</span>
-        <span class="nav__logo-text">Vitor Pietro</span>
+    <nav class="nav container" aria-label="Navegação principal">
+      <a class="nav__brand" href="#top" aria-label="Vitor Pietro — início">
+        <span class="nav__mark" aria-hidden="true">VP</span>
+        <span>Vitor Pietro</span>
       </a>
-      <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+
+      <button class="nav__toggle" id="navToggle" type="button" aria-controls="navLinks" aria-expanded="false" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
+
       <ul class="nav__links" id="navLinks">
-        <li><a href="#sobre" class="nav__link">Sobre</a></li>
-        <li><a href="#projetos" class="nav__link">Projetos</a></li>
-        <li><a href="#habilidades" class="nav__link">Habilidades</a></li>
-        <li><a href="#formacao" class="nav__link">Formação</a></li>
-        <li><a href="#contato" class="nav__link nav__link--cta">Contato</a></li>
+        <li><a class="nav__link" href="#sobre">Sobre</a></li>
+        <li><a class="nav__link" href="#projetos">Projetos</a></li>
+        <li><a class="nav__link" href="#habilidades">Habilidades</a></li>
+        <li><a class="nav__link" href="#formacao">Formação</a></li>
+        <li><a class="nav__link nav__link--contact" href="#contato">Contato</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
+  <main id="conteudo">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__lines" aria-hidden="true"></div>
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="availability"><span aria-hidden="true"></span>Disponível para estágio ou oportunidade inicial</p>
+          <p class="hero__name">Vitor Pietro de Souza Ferreira</p>
+          <h1 id="hero-title">Desenvolvedor Web em formação, criando sistemas para operação real.</h1>
+          <p class="hero__lead">Estudante de ADS com experiência prática em sistemas web, painéis administrativos, cadastros, pedidos, caixa, estoque, relatórios e automação de processos.</p>
 
-    <!-- ═══════════════════════════════════════════ HERO -->
-    <section class="hero" id="inicio">
-      <div class="hero__bg-grid" aria-hidden="true"></div>
-      <div class="hero__glow" aria-hidden="true"></div>
-      <canvas class="hero__particles" id="heroParticles" aria-hidden="true"></canvas>
-
-      <div class="container hero__inner">
-        <div class="hero__badge reveal">
-          <span class="badge__dot"></span>
-          Disponível para estágio
-        </div>
-
-        <h1 class="hero__name reveal reveal--delay-1">
-          Vitor Pietro<br />
-          <span class="hero__name--accent">de Souza Ferreira</span>
-        </h1>
-
-        <p class="hero__title reveal reveal--delay-2">
-          <span class="mono">// </span>Estudante de ADS
-          <span class="sep">·</span> Desenvolvimento Web
-          <span class="sep">·</span> Estágio em TI
-        </p>
-
-        <p class="hero__desc reveal reveal--delay-3">
-          Desenvolvo sistemas web com foco em operação real — SaaS, painéis administrativos, controle financeiro, agendamentos e fluxos comerciais. Não só telas bonitas: sistemas que funcionam no dia a dia de quem usa.
-        </p>
-
-        <div class="hero__actions reveal reveal--delay-4">
-          <a href="#projetos" class="btn btn--primary">Ver projetos</a>
-          <a href="#contato" class="btn btn--ghost">Entrar em contato</a>
-          <a href="https://github.com/Pietrobsn" target="_blank" rel="noopener" class="btn btn--icon" aria-label="GitHub">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/>
-            </svg>
-            GitHub
-          </a>
-        </div>
-
-        <div class="hero__stack reveal reveal--delay-5">
-          <span class="stack__label mono">stack atual</span>
-          <div class="stack__tags">
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">Python</span>
-            <span class="tag">SQL</span>
-            <span class="tag">Supabase</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">Nginx</span>
-            <span class="tag">Git</span>
-            <span class="tag">Netlify</span>
-            <span class="tag">VPS</span>
+          <div class="hero__actions" aria-label="Ações principais">
+            <a class="button button--primary" href="#projetos">Ver projetos <span aria-hidden="true">↓</span></a>
+            <a class="button button--secondary" href="#contato">Entrar em contato</a>
+            <a class="button button--text" href="https://github.com/Pietrobsn" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
           </div>
         </div>
-      </div>
 
-      <div class="hero__scroll-hint" aria-hidden="true">
-        <span class="mono">scroll</span>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <aside class="profile-summary" aria-label="Resumo do perfil">
+          <div class="profile-summary__header">
+            <span class="mono">PERFIL / 30 SEGUNDOS</span>
+            <span class="profile-summary__status">Em formação</span>
+          </div>
+          <dl class="profile-summary__list">
+            <div>
+              <dt>Formação</dt>
+              <dd>Tecnólogo em ADS — em andamento</dd>
+            </div>
+            <div>
+              <dt>Foco</dt>
+              <dd>Desenvolvimento Web e TI</dd>
+            </div>
+            <div>
+              <dt>Base técnica</dt>
+              <dd>JavaScript, SQL, Supabase e Node.js</dd>
+            </div>
+            <div class="profile-summary__featured">
+              <dt>Projetos públicos</dt>
+              <dd>Barber Cloud + Comanda</dd>
+            </div>
+          </dl>
+        </aside>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════ SOBRE -->
-    <section class="section" id="sobre">
-      <div class="section-deco section-deco--shapes" data-parallax aria-hidden="true">
-        <span class="px" data-depth="7"><svg class="deco-shape deco-shape--tri-1" viewBox="0 0 100 100"><polygon points="50,8 92,88 8,88"/></svg></span>
-        <span class="px" data-depth="3.5"><svg class="deco-shape deco-shape--circle" viewBox="0 0 100 100"><circle cx="50" cy="50" r="42"/></svg></span>
-        <span class="px" data-depth="2.5"><svg class="deco-shape deco-shape--square" viewBox="0 0 100 100"><rect x="12" y="12" width="76" height="76" rx="8"/></svg></span>
-        <span class="px" data-depth="8"><svg class="deco-shape deco-shape--tri-2" viewBox="0 0 100 100"><polygon points="50,8 92,88 8,88"/></svg></span>
-        <span class="px" data-depth="5"><svg class="deco-shape deco-shape--plus" viewBox="0 0 100 100"><path d="M50 20v60M20 50h60"/></svg></span>
-      </div>
-      <div class="container section__inner">
-        <div class="section__label reveal">
-          <span class="mono">01 /</span> Sobre mim
-        </div>
-
-        <div class="about__grid">
-          <div class="about__text reveal reveal--delay-1">
-            <h2 class="section__title">Construo sistemas.<br />Aprendo enquanto faço.</h2>
-            <p>
-              Tenho 17 anos, estudo Análise e Desenvolvimento de Sistemas na Faculdade Anhanguera e já tenho experiência prática com projetos reais — sistemas entregues, usados em operação e ajustados com base em feedback real.
-            </p>
-            <p>
-              Desenvolvo aplicações web com foco em operação comercial: SaaS, painéis administrativos, controle financeiro, agendamentos, gestão de pedidos e banco de dados. Já fiz deploy em VPS com Nginx e PM2, configurei ambientes de produção e trabalhei com clientes reais.
-            </p>
-            <p>
-              Busco um estágio onde eu possa contribuir de verdade e crescer dentro de uma equipe. Gosto de resolver problemas reais, não de construir projetos só pra portfólio.
-            </p>
+    <section class="section" id="sobre" aria-labelledby="sobre-title">
+      <div class="container">
+        <header class="section-heading section-heading--split">
+          <div>
+            <p class="section-index mono">01 / SOBRE</p>
+            <h2 id="sobre-title">Tecnologia aplicada a rotinas que precisam funcionar.</h2>
           </div>
+          <p>Tenho 17 anos, estudo Análise e Desenvolvimento de Sistemas e desenvolvo aplicações web voltadas para rotinas comerciais. Gosto de organizar processos, criar painéis administrativos, automatizar tarefas e transformar necessidades de operação em sistemas simples de usar.</p>
+        </header>
 
-          <div class="about__cards reveal reveal--delay-2">
-            <div class="about__card">
-              <span class="about__card-number mono">02+</span>
-              <span class="about__card-label">anos construindo<br />sistemas reais</span>
-            </div>
-            <div class="about__card">
-              <span class="about__card-number mono">4+</span>
-              <span class="about__card-label">projetos entregues<br />para uso comercial</span>
-            </div>
-            <div class="about__card about__card--wide">
-              <span class="about__card-number mono">∞</span>
-              <span class="about__card-label">vontade de aprender<br />em ambiente profissional</span>
-            </div>
-          </div>
+        <div class="about-strip">
+          <p>Busco uma oportunidade inicial na área de tecnologia para evoluir em equipe, aprender com projetos reais e contribuir com desenvolvimento web, banco de dados, suporte técnico e manutenção de sistemas.</p>
+          <dl class="about-facts">
+            <div><dt class="mono">4+</dt><dd>projetos desenvolvidos</dd></div>
+            <div><dt>Prática</dt><dd>com negócios reais</dd></div>
+            <div><dt>Objetivo</dt><dd>Desenvolvimento Web / TI</dd></div>
+          </dl>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════ PROJETOS -->
-    <section class="section section--alt" id="projetos">
-      <div class="section-deco section-deco--orbs" data-parallax aria-hidden="true">
-        <span class="px" data-depth="4"><span class="orb orb--1"></span></span>
-        <span class="px" data-depth="2.5"><span class="orb orb--2"></span></span>
-        <span class="px" data-depth="6"><span class="orb orb--3"></span></span>
-      </div>
-      <div class="container section__inner">
-        <div class="section__label reveal">
-          <span class="mono">02 /</span> Projetos & Experiência prática
-        </div>
-        <h2 class="section__title reveal reveal--delay-1">O que já construí</h2>
-        <p class="section__subtitle reveal reveal--delay-2">
-          Sistemas desenvolvidos para operação real — não são demos, são ferramentas que pessoas usam.
-        </p>
+    <section class="section section--projects" id="projetos" aria-labelledby="projetos-title">
+      <div class="container">
+        <header class="section-heading">
+          <p class="section-index mono">02 / PROJETOS</p>
+          <h2 id="projetos-title">Projetos que mostram como eu construo.</h2>
+          <p>Os links públicos abaixo mostram landings, demos seguras ou repositórios demonstrativos. Sistemas oficiais/comerciais continuam privados, sem painel real, login real, dados reais ou código oficial exposto.</p>
+        </header>
 
-        <div class="projects__grid">
-
-          <article class="project-card project-card--highlight reveal" data-index="0">
-            <div class="project-card__header">
-              <div class="project-card__icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
-              </div>
-              <span class="project-card__status project-card__status--live">Disponível</span>
+        <div class="featured-projects">
+          <article class="project-card project-card--featured">
+            <header class="project-card__topline">
+              <span class="project-card__number mono">PROJETO 01</span>
+              <span class="status status--public">Landing pública</span>
+            </header>
+            <div class="project-card__body">
+              <p class="project-card__type mono">GESTÃO / BARBEARIAS</p>
+              <h3>Barber Cloud</h3>
+              <p class="project-card__description">Sistema para barbearias com foco em agendamento online, página própria, escolha de serviço, barbeiro e horário, além de painel administrativo privado.</p>
+              <p class="project-card__note">Produto comercial privado. A landing pública apresenta a proposta do projeto, enquanto o repositório demo mostra uma versão segura e reduzida para avaliação técnica.</p>
             </div>
-            <h3 class="project-card__title">Barber Cloud — SaaS para Barbearias</h3>
-            <p class="project-card__desc">
-              Plataforma multi-tenant para barbearias: página pública com agendamento online, escolha de serviço e barbeiro, painel administrativo por estabelecimento e painel master para gestão geral. Autenticação própria com tokens temporários, senhas com hash e isolamento total entre barbearias. Produto pronto, captando clientes.
-            </p>
-            <ul class="project-card__tags">
-              <li>HTML/CSS/JS</li>
-              <li>Supabase</li>
-              <li>RLS / RPCs</li>
-              <li>Multi-tenant</li>
-              <li>SaaS</li>
-              <li>Netlify</li>
+            <ul class="tech-list" aria-label="Tecnologias">
+              <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Agendamentos</li><li>Painel admin</li>
             </ul>
+            <footer class="project-card__actions">
+              <a class="button button--primary" href="https://barbercloud.netlify.app" target="_blank" rel="noopener noreferrer">Ver landing <span aria-hidden="true">↗</span></a>
+              <a class="button button--secondary" href="https://github.com/Pietrobsn/barber-cloud-demo" target="_blank" rel="noopener noreferrer">Ver GitHub demo <span aria-hidden="true">↗</span></a>
+            </footer>
           </article>
 
-          <article class="project-card project-card--highlight reveal" data-index="1">
-            <div class="project-card__header">
-              <div class="project-card__icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
-                </svg>
-              </div>
-              <span class="project-card__status project-card__status--dev">Em desenvolvimento</span>
+          <article class="project-card project-card--featured">
+            <header class="project-card__topline">
+              <span class="project-card__number mono">PROJETO 02</span>
+              <span class="status status--public">GitHub demo</span>
+            </header>
+            <div class="project-card__body">
+              <p class="project-card__type mono">GESTÃO / ALIMENTAÇÃO</p>
+              <h3>Comanda</h3>
+              <p class="project-card__description">Sistema para restaurantes, pizzarias e delivery, com foco em pedidos, comandas, cardápio, caixa, estoque, entregadores e operação diária.</p>
+              <p class="project-card__note">Produto comercial privado. A versão pública é apenas uma demo reduzida e segura para portfólio, sem dados reais e sem credenciais de produção.</p>
             </div>
-            <h3 class="project-card__title">Sistema Pra Pizzaria — Gestão para Delivery</h3>
-            <p class="project-card__desc">
-              Sistema operacional para pizzarias, lanchonetes e delivery: cardápio digital, controle de pedidos em tempo real por status, comanda, fluxo pedido → pagamento → entrega, caixa e DRE. Interface mobile-first com botões grandes pensados para operação em ritmo acelerado.
-            </p>
-            <ul class="project-card__tags">
-              <li>HTML/CSS/JS</li>
-              <li>Supabase</li>
-              <li>Tempo real</li>
-              <li>PWA</li>
-              <li>SaaS</li>
+            <ul class="tech-list" aria-label="Tecnologias">
+              <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Gestão de pedidos</li><li>Interface responsiva</li>
             </ul>
+            <footer class="project-card__actions">
+              <a class="button button--primary" href="https://github.com/Pietrobsn/comanda-demo" target="_blank" rel="noopener noreferrer">Ver GitHub demo <span aria-hidden="true">↗</span></a>
+            </footer>
+          </article>
+        </div>
+
+        <div class="secondary-projects" aria-label="Outros projetos">
+          <article class="project-row">
+            <div class="project-row__identity">
+              <span class="project-card__number mono">PROJETO 03</span>
+              <div><h3>Folha Superação</h3><p>Sistema para Academia</p></div>
+            </div>
+            <p class="project-row__description">Sistema web operacional desenvolvido para academia real, com controle de caixa, folha de pagamento, planos, relatórios e rotinas administrativas.</p>
+            <ul class="tech-list tech-list--compact" aria-label="Tecnologias">
+              <li>JavaScript</li><li>Node.js</li><li>PostgreSQL</li><li>SQL</li>
+            </ul>
+            <span class="status status--private">Código privado</span>
           </article>
 
-          <article class="project-card reveal" data-index="2">
-            <div class="project-card__header">
-              <div class="project-card__icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
-                </svg>
-              </div>
-              <span class="project-card__status project-card__status--live">Entregue</span>
+          <article class="project-row">
+            <div class="project-row__identity">
+              <span class="project-card__number mono">PROJETO 04</span>
+              <div><h3>APIForge</h3><p>Organização de APIs</p></div>
             </div>
-            <h3 class="project-card__title">Folha Superação — Sistema para Academia</h3>
-            <p class="project-card__desc">
-              Sistema web operacional desenvolvido para uma academia real: folha de pagamento de funcionários, controle de caixa por categoria, gestão de planos e relatórios por período. Entregue com ajustes pós-feedback, deploy em VPS com Nginx e PM2, login restrito e banco PostgreSQL local.
-            </p>
-            <ul class="project-card__tags">
-              <li>HTML/CSS/JS</li>
-              <li>PostgreSQL</li>
-              <li>Node.js</li>
-              <li>Nginx</li>
-              <li>PM2</li>
-              <li>VPS</li>
+            <p class="project-row__description">Projeto para criação e organização de APIs, endpoints CRUD e backends simulados. Atualmente em desenvolvimento.</p>
+            <ul class="tech-list tech-list--compact" aria-label="Tecnologias">
+              <li>JavaScript</li><li>Supabase</li><li>SQL</li><li>CRUD</li>
             </ul>
+            <span class="status status--building">Em desenvolvimento</span>
           </article>
+        </div>
+      </div>
+    </section>
 
-          <article class="project-card reveal" data-index="3">
-            <div class="project-card__header">
-              <div class="project-card__icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-                </svg>
-              </div>
-              <span class="project-card__status project-card__status--dev">Em desenvolvimento</span>
-            </div>
-            <h3 class="project-card__title">APIForge — Plataforma de Gestão de APIs</h3>
-            <p class="project-card__desc">
-              Plataforma para criação, organização e gerenciamento de APIs com painel administrativo e suporte a múltiplos usuários. Projeto autoral com foco em produtividade para desenvolvedores que trabalham com integração de sistemas.
-            </p>
-            <ul class="project-card__tags">
-              <li>HTML/CSS/JS</li>
-              <li>Supabase</li>
-              <li>SQL</li>
-              <li>GitHub</li>
-            </ul>
+    <section class="section" id="habilidades" aria-labelledby="habilidades-title">
+      <div class="container">
+        <header class="section-heading section-heading--compact">
+          <p class="section-index mono">03 / HABILIDADES</p>
+          <h2 id="habilidades-title">Conhecimentos que aplico nos projetos.</h2>
+        </header>
+
+        <div class="skills-grid">
+          <article class="skill-group">
+            <span class="skill-group__number mono">01</span>
+            <h3>Frontend</h3>
+            <ul><li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Responsividade</li></ul>
           </article>
-
+          <article class="skill-group">
+            <span class="skill-group__number mono">02</span>
+            <h3>Backend e Dados</h3>
+            <ul><li>Python</li><li>SQL</li><li>PostgreSQL</li><li>Supabase</li><li>Node.js</li></ul>
+          </article>
+          <article class="skill-group">
+            <span class="skill-group__number mono">03</span>
+            <h3>Sistemas e Produto</h3>
+            <ul><li>CRUD</li><li>Dashboards</li><li>Cadastros</li><li>Relatórios</li><li>Caixa</li><li>Estoque</li><li>Agendamentos</li><li>Pedidos</li></ul>
+          </article>
+          <article class="skill-group">
+            <span class="skill-group__number mono">04</span>
+            <h3>Ferramentas</h3>
+            <ul><li>Git</li><li>GitHub</li><li>VS Code</li><li>Netlify</li><li>Excel</li><li>Power BI</li></ul>
+          </article>
+          <article class="skill-group skill-group--wide">
+            <span class="skill-group__number mono">05</span>
+            <h3>Suporte Técnico</h3>
+            <ul><li>Formatação</li><li>Manutenção básica</li><li>Diagnóstico de hardware</li><li>Windows</li></ul>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════ HABILIDADES -->
-    <section class="section" id="habilidades">
-      <div class="section-deco section-deco--dots" data-parallax aria-hidden="true">
-        <span class="px" data-depth="3">
-          <span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span>
-        </span>
-      </div>
-      <div class="container section__inner">
-        <div class="section__label reveal">
-          <span class="mono">03 /</span> Habilidades técnicas
-        </div>
-        <h2 class="section__title reveal reveal--delay-1">Stack & Ferramentas</h2>
+    <section class="section section--education" id="formacao" aria-labelledby="formacao-title">
+      <div class="container">
+        <header class="section-heading section-heading--compact">
+          <p class="section-index mono">04 / FORMAÇÃO</p>
+          <h2 id="formacao-title">Formação acadêmica.</h2>
+        </header>
 
-        <div class="skills__grid">
-
-          <div class="skill-group reveal reveal--delay-1">
-            <div class="skill-group__header">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
-              </svg>
-              <h3>Frontend</h3>
-            </div>
-            <ul class="skill-group__list">
-              <li><span class="skill-bar" style="--w:85%"></span>HTML5</li>
-              <li><span class="skill-bar" style="--w:80%"></span>CSS3 / responsivo</li>
-              <li><span class="skill-bar" style="--w:75%"></span>JavaScript (ES6+)</li>
-            </ul>
+        <article class="education-row">
+          <div class="education-row__year mono">2026 →</div>
+          <div class="education-row__content">
+            <h3>Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
+            <p>Faculdade Anhanguera</p>
           </div>
-
-          <div class="skill-group reveal reveal--delay-2">
-            <div class="skill-group__header">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
-              </svg>
-              <h3>Backend & Dados</h3>
-            </div>
-            <ul class="skill-group__list">
-              <li><span class="skill-bar" style="--w:75%"></span>Python</li>
-              <li><span class="skill-bar" style="--w:80%"></span>SQL</li>
-              <li><span class="skill-bar" style="--w:80%"></span>Supabase (Auth, DB, Storage)</li>
-              <li><span class="skill-bar" style="--w:70%"></span>PostgreSQL</li>
-              <li><span class="skill-bar" style="--w:65%"></span>Node.js</li>
-            </ul>
+          <div class="education-row__meta">
+            <span>Início: fevereiro de 2026</span>
+            <span class="status status--public">Em andamento</span>
           </div>
-
-          <div class="skill-group reveal reveal--delay-3">
-            <div class="skill-group__header">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
-              </svg>
-              <h3>Infra & Deploy</h3>
-            </div>
-            <ul class="skill-group__list">
-              <li><span class="skill-bar" style="--w:80%"></span>Git & GitHub</li>
-              <li><span class="skill-bar" style="--w:75%"></span>Netlify</li>
-              <li><span class="skill-bar" style="--w:70%"></span>VPS + Nginx</li>
-              <li><span class="skill-bar" style="--w:70%"></span>PM2</li>
-            </ul>
-          </div>
-
-          <div class="skill-group reveal reveal--delay-4">
-            <div class="skill-group__header">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8l2 2-2 2M11 13h4"/>
-              </svg>
-              <h3>Suporte Técnico</h3>
-            </div>
-            <ul class="skill-group__list">
-              <li><span class="skill-bar" style="--w:85%"></span>Formatação & instalação</li>
-              <li><span class="skill-bar" style="--w:80%"></span>Diagnóstico de hardware</li>
-              <li><span class="skill-bar" style="--w:80%"></span>Configuração Windows/drivers</li>
-            </ul>
-          </div>
-
-          <div class="skill-group skill-group--support reveal reveal--delay-5">
-            <div class="skill-group__header">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
-              </svg>
-              <h3>Apoio</h3>
-            </div>
-            <ul class="skill-group__list skill-group__list--inline">
-              <li>Excel</li>
-              <li>Power BI</li>
-              <li>Pacote Office</li>
-            </ul>
-          </div>
-
-        </div>
+        </article>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════ FORMAÇÃO -->
-    <section class="section section--alt" id="formacao">
-      <div class="section-deco section-deco--rings" data-parallax aria-hidden="true">
-        <span class="px" data-depth="3"><span class="ring ring--1"></span></span>
-        <span class="px" data-depth="6"><span class="ring ring--2"></span></span>
-      </div>
-      <div class="container section__inner">
-        <div class="section__label reveal">
-          <span class="mono">04 /</span> Formação
+    <section class="section section--contact" id="contato" aria-labelledby="contato-title">
+      <div class="container contact-layout">
+        <div class="contact-copy">
+          <p class="section-index mono">05 / CONTATO</p>
+          <h2 id="contato-title">Aberto a oportunidades para começar e evoluir em equipe.</h2>
+          <p>Busco estágio ou oportunidade inicial em Desenvolvimento Web ou TI. Posso contribuir com desenvolvimento, banco de dados, suporte técnico e manutenção de sistemas.</p>
         </div>
-        <h2 class="section__title reveal reveal--delay-1">Educação</h2>
 
-        <div class="education__card reveal reveal--delay-2">
-          <div class="education__icon" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
-            </svg>
-          </div>
-          <div class="education__body">
-            <h3 class="education__degree">Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
-            <p class="education__institution">Faculdade Anhanguera</p>
-            <p class="education__period mono">Início: fevereiro de 2026</p>
-          </div>
-          <div class="education__badge">Em andamento</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════ CONTATO -->
-    <section class="section" id="contato">
-      <div class="section-deco section-deco--glow" data-parallax aria-hidden="true">
-        <span class="px" data-depth="5"><span class="glow-blob glow-blob--1"></span></span>
-        <span class="px" data-depth="3"><span class="glow-blob glow-blob--2"></span></span>
-      </div>
-      <div class="container section__inner">
-        <div class="section__label reveal">
-          <span class="mono">05 /</span> Contato
-        </div>
-        <h2 class="section__title reveal reveal--delay-1">Vamos conversar?</h2>
-        <p class="section__subtitle reveal reveal--delay-2">
-          Estou disponível para estágio em desenvolvimento web ou TI. Me chama pelo WhatsApp ou manda um e-mail — respondo rápido.
-        </p>
-
-        <div class="contact__grid reveal reveal--delay-3">
-
-          <a href="https://wa.me/5581982977975" target="_blank" rel="noopener" class="contact-card contact-card--whatsapp">
-            <div class="contact-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
-            </div>
-            <div class="contact-card__body">
-              <span class="contact-card__label mono">WhatsApp</span>
-              <span class="contact-card__value">+55 (81) 98297-7975</span>
-            </div>
-            <div class="contact-card__arrow" aria-hidden="true">→</div>
+        <div class="contact-list">
+          <a href="https://wa.me/5581982977975" target="_blank" rel="noopener noreferrer">
+            <span class="contact-list__label mono">WHATSAPP</span>
+            <strong>+55 (81) 98297-7975</strong>
+            <span aria-hidden="true">↗</span>
           </a>
-
-          <a href="mailto:vitorpietro86@gmail.com" class="contact-card contact-card--email">
-            <div class="contact-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/>
-              </svg>
-            </div>
-            <div class="contact-card__body">
-              <span class="contact-card__label mono">E-mail</span>
-              <span class="contact-card__value">vitorpietro86@gmail.com</span>
-            </div>
-            <div class="contact-card__arrow" aria-hidden="true">→</div>
+          <a href="mailto:vitorpietro86@gmail.com">
+            <span class="contact-list__label mono">E-MAIL</span>
+            <strong>vitorpietro86@gmail.com</strong>
+            <span aria-hidden="true">↗</span>
           </a>
-
-          <a href="https://github.com/Pietrobsn" target="_blank" rel="noopener" class="contact-card contact-card--github">
-            <div class="contact-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/>
-              </svg>
-            </div>
-            <div class="contact-card__body">
-              <span class="contact-card__label mono">GitHub</span>
-              <span class="contact-card__value">github.com/Pietrobsn</span>
-            </div>
-            <div class="contact-card__arrow" aria-hidden="true">→</div>
+          <a href="https://github.com/Pietrobsn" target="_blank" rel="noopener noreferrer">
+            <span class="contact-list__label mono">GITHUB</span>
+            <strong>github.com/Pietrobsn</strong>
+            <span aria-hidden="true">↗</span>
           </a>
-
-          <a href="https://linkedin.com/in/vitor-pietro-4729b73b6" target="_blank" rel="noopener" class="contact-card contact-card--linkedin">
-            <div class="contact-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/>
-              </svg>
-            </div>
-            <div class="contact-card__body">
-              <span class="contact-card__label mono">LinkedIn</span>
-              <span class="contact-card__value">Vitor Pietro</span>
-            </div>
-            <div class="contact-card__arrow" aria-hidden="true">→</div>
+          <a href="https://www.linkedin.com/in/vitor-pietro-4729b73b6/" target="_blank" rel="noopener noreferrer">
+            <span class="contact-list__label mono">LINKEDIN</span>
+            <strong>Vitor Pietro</strong>
+            <span aria-hidden="true">↗</span>
           </a>
-
         </div>
       </div>
     </section>
-
   </main>
 
-  <!-- ═══════════════════════════════════════════ FOOTER -->
   <footer class="footer">
     <div class="container footer__inner">
-      <span class="mono footer__copy">© 2026 Vitor Pietro de Souza Ferreira</span>
-      <a href="#top" class="footer__back mono">↑ topo</a>
+      <p>© <span id="currentYear">2026</span> Vitor Pietro de Souza Ferreira</p>
+      <p class="mono">DESENVOLVIMENTO WEB / TI</p>
+      <a href="#top">Voltar ao topo ↑</a>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
