@@ -22,6 +22,20 @@
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
+  <div class="bg-aurora" aria-hidden="true">
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav class="section-dots" aria-label="Navegação entre seções">
+    <a href="#inicio" aria-label="Início"></a>
+    <a href="#sobre" aria-label="Sobre"></a>
+    <a href="#projetos" aria-label="Projetos"></a>
+    <a href="#habilidades" aria-label="Habilidades"></a>
+    <a href="#formacao" aria-label="Formação"></a>
+    <a href="#contato" aria-label="Contato"></a>
+  </nav>
+
   <header class="header" id="top">
     <nav class="nav container" aria-label="Navegação principal">
       <a class="nav__brand" href="#top" aria-label="Vitor Pietro — início">
@@ -46,7 +60,7 @@
   </header>
 
   <main id="conteudo">
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="hero__lines" aria-hidden="true"></div>
       <canvas class="hero__particles" id="heroParticles" aria-hidden="true"></canvas>
       <div class="container hero__grid">
@@ -54,6 +68,7 @@
           <p class="availability reveal"><span aria-hidden="true"></span>Disponível para estágio ou oportunidade inicial</p>
           <p class="hero__name reveal reveal--delay-1">Vitor Pietro de Souza Ferreira</p>
           <h1 id="hero-title" class="reveal reveal--delay-2">Desenvolvedor Web em formação, criando sistemas para <span class="hero__highlight">operação real</span>.</h1>
+          <p class="hero__typing mono reveal reveal--delay-3" aria-hidden="true"><span class="hero__typing-prefix">&gt; </span><span id="typingText"></span><span class="hero__typing-caret"></span></p>
           <p class="hero__lead reveal reveal--delay-3">Estudante de ADS com experiência prática em sistemas web, painéis administrativos, cadastros, pedidos, caixa, estoque, relatórios e automação de processos.</p>
 
           <div class="hero__actions reveal reveal--delay-4" aria-label="Ações principais">
@@ -63,7 +78,7 @@
           </div>
         </div>
 
-        <aside class="profile-summary reveal reveal--delay-2" aria-label="Resumo do perfil">
+        <aside class="profile-summary reveal reveal--pop reveal--delay-4" aria-label="Resumo do perfil">
           <div class="profile-summary__header">
             <span class="mono">PERFIL / 30 SEGUNDOS</span>
             <span class="profile-summary__status">Em formação</span>
@@ -112,6 +127,7 @@
     </section>
 
     <section class="section section--projects" id="projetos" aria-labelledby="projetos-title">
+      <div class="section-blob section-blob--left" data-parallax="0.14" aria-hidden="true"></div>
       <div class="container">
         <header class="section-heading reveal">
           <p class="section-index mono">02 / PROJETOS</p>
@@ -120,7 +136,7 @@
         </header>
 
         <div class="featured-projects">
-          <article class="project-card project-card--featured reveal">
+          <article class="project-card project-card--featured reveal reveal--pop">
             <header class="project-card__topline">
               <span class="project-card__number mono">PROJETO 01</span>
               <span class="status status--public">Landing pública</span>
@@ -140,7 +156,7 @@
             </footer>
           </article>
 
-          <article class="project-card project-card--featured reveal reveal--delay-1">
+          <article class="project-card project-card--featured reveal reveal--pop reveal--delay-1">
             <header class="project-card__topline">
               <span class="project-card__number mono">PROJETO 02</span>
               <span class="status status--public">GitHub demo</span>
@@ -189,6 +205,7 @@
     </section>
 
     <section class="section" id="habilidades" aria-labelledby="habilidades-title">
+      <div class="section-blob section-blob--right" data-parallax="0.11" aria-hidden="true"></div>
       <div class="container">
         <header class="section-heading section-heading--compact reveal">
           <p class="section-index mono">03 / HABILIDADES</p>
