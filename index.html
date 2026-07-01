@@ -29,6 +29,58 @@
 
   <canvas class="galaxy-canvas" id="galaxyCanvas" aria-hidden="true"></canvas>
 
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-external" viewBox="0 0 24 24">
+      <path d="M7 17 17 7" />
+      <path d="M9 7h8v8" />
+      <path d="M19 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5" />
+    </symbol>
+    <symbol id="icon-github" viewBox="0 0 24 24">
+      <path d="M12 2.6a9.4 9.4 0 0 0-3 18.3c.47.08.64-.2.64-.45v-1.58c-2.62.57-3.17-1.12-3.17-1.12-.43-1.08-1.04-1.37-1.04-1.37-.85-.58.06-.57.06-.57.94.07 1.44.97 1.44.97.84 1.43 2.2 1.02 2.73.78.08-.6.33-1.02.6-1.25-2.09-.24-4.29-1.04-4.29-4.64 0-1.03.37-1.87.97-2.52-.1-.24-.42-1.2.09-2.49 0 0 .79-.25 2.6.96a8.9 8.9 0 0 1 4.74 0c1.8-1.21 2.59-.96 2.59-.96.52 1.29.2 2.25.1 2.49.6.65.96 1.49.96 2.52 0 3.61-2.2 4.4-4.3 4.64.34.29.64.86.64 1.74v2.58c0 .25.17.54.65.45A9.4 9.4 0 0 0 12 2.6Z" />
+    </symbol>
+    <symbol id="icon-linkedin" viewBox="0 0 24 24">
+      <path d="M7.2 20.4H3.8V9h3.4v11.4Z" />
+      <path d="M5.5 7.4a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" />
+      <path d="M20.2 20.4h-3.4v-5.7c0-1.5-.55-2.5-1.92-2.5-1.04 0-1.66.7-1.94 1.38-.1.24-.12.57-.12.9v5.92H9.4s.05-9.6 0-10.6h3.42v1.5c.45-.7 1.27-1.7 3.1-1.7 2.26 0 4.28 1.48 4.28 4.68v6.12Z" />
+    </symbol>
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24">
+      <path d="M20.2 11.8a8.1 8.1 0 0 1-11.9 7.1L4 20l1.15-4.15A8.08 8.08 0 1 1 20.2 11.8Z" />
+      <path d="M8.72 7.9c.2-.45.4-.46.58-.46h.5c.16 0 .38.06.58.44.2.38.68 1.66.74 1.78.06.12.1.26.02.42-.08.16-.12.25-.24.38-.12.14-.25.3-.36.4-.12.12-.25.25-.1.5.14.24.62 1.02 1.34 1.65.92.82 1.7 1.08 1.94 1.2.24.12.38.1.52-.06.14-.16.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.42.67 1.66.8.24.12.4.18.46.28.06.1.06.58-.14 1.14-.2.56-1.16 1.07-1.62 1.14-.42.06-.96.09-1.55-.1-.36-.12-.82-.27-1.4-.52-2.46-1.06-4.06-3.52-4.18-3.68-.12-.16-1-1.33-1-2.53s.64-1.8.86-2.04Z" />
+    </symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24">
+      <path d="M4 6h16v12H4z" />
+      <path d="m4 7 8 6 8-6" />
+    </symbol>
+    <symbol id="icon-code" viewBox="0 0 24 24">
+      <path d="m9 18-6-6 6-6" />
+      <path d="m15 6 6 6-6 6" />
+      <path d="m14 4-4 16" />
+    </symbol>
+    <symbol id="icon-site" viewBox="0 0 24 24">
+      <path d="M4 5h16v14H4z" />
+      <path d="M4 9h16" />
+      <path d="M8 13h4" />
+      <path d="M8 16h8" />
+    </symbol>
+    <symbol id="icon-dashboard" viewBox="0 0 24 24">
+      <path d="M4 4h16v16H4z" />
+      <path d="M8 15v2" />
+      <path d="M12 11v6" />
+      <path d="M16 8v9" />
+      <path d="M7 8h4" />
+    </symbol>
+    <symbol id="icon-database" viewBox="0 0 24 24">
+      <ellipse cx="12" cy="6" rx="7" ry="3" />
+      <path d="M5 6v6c0 1.66 3.13 3 7 3s7-1.34 7-3V6" />
+      <path d="M5 12v6c0 1.66 3.13 3 7 3s7-1.34 7-3v-6" />
+    </symbol>
+    <symbol id="icon-web" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8" />
+      <path d="M4 12h16" />
+      <path d="M12 4c2.3 2.2 3.45 4.86 3.45 8S14.3 17.8 12 20c-2.3-2.2-3.45-4.86-3.45-8S9.7 6.2 12 4Z" />
+    </symbol>
+  </svg>
+
   <nav class="section-dots" aria-label="Navegação entre seções">
     <a href="#inicio" aria-label="Início"></a>
     <a href="#sobre" aria-label="Sobre"></a>
@@ -145,76 +197,94 @@
       <div class="container">
         <header class="section-heading reveal">
           <p class="section-index mono">02 / PROJETOS</p>
-          <h2 id="projetos-title">Projetos que mostram como eu construo.</h2>
-          <p>Os links públicos abaixo mostram landings, demos seguras ou repositórios demonstrativos. Sistemas oficiais/comerciais continuam privados, sem painel real, login real, dados reais ou código oficial exposto.</p>
+          <h2 id="projetos-title">Projetos selecionados</h2>
+          <p>Alguns recortes públicos do meu trabalho com sistemas web, SaaS, painéis administrativos e fluxos operacionais. Parte dos projetos comerciais possui versões demonstrativas ou landings públicas para apresentação técnica.</p>
         </header>
 
         <div class="featured-projects">
           <article class="project-card project-card--featured reveal reveal--pop">
             <header class="project-card__topline">
-              <span class="project-card__number mono">PROJETO 01</span>
-              <span class="status status--public">Landing pública</span>
+              <div class="project-badges" aria-label="Categorias do projeto">
+                <span class="status status--product"><svg class="icon" aria-hidden="true"><use href="#icon-site"></use></svg>Produto / SaaS</span>
+                <span class="status status--public"><svg class="icon" aria-hidden="true"><use href="#icon-external"></use></svg>Landing pública</span>
+                <span class="status status--demo"><svg class="icon" aria-hidden="true"><use href="#icon-code"></use></svg>Demo pública</span>
+              </div>
             </header>
             <div class="project-card__body">
               <p class="project-card__type mono">GESTÃO / BARBEARIAS</p>
               <h3>Barber Cloud</h3>
-              <p class="project-card__description">Sistema para barbearias com foco em agendamento online, página própria, escolha de serviço, barbeiro e horário, além de painel administrativo privado.</p>
-              <p class="project-card__note">Produto comercial privado. A landing pública apresenta a proposta do projeto, enquanto o repositório demo mostra uma versão segura e reduzida para avaliação técnica.</p>
+              <p class="project-card__description">Sistema para barbearias com foco em agendamento online, página própria, escolha de serviço, barbeiro e horário, além de painel administrativo.</p>
+              <p class="project-card__note">Landing pública disponível e repositório demonstrativo criado para avaliação técnica.</p>
             </div>
             <ul class="tech-list" aria-label="Tecnologias">
               <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Agendamentos</li><li>Painel admin</li>
             </ul>
             <footer class="project-card__actions">
-              <a class="button button--primary" href="https://barbercloud.netlify.app" target="_blank" rel="noopener noreferrer">Ver landing <span aria-hidden="true">↗</span></a>
-              <a class="button button--secondary" href="https://github.com/Pietrobsn/barber-cloud-demo" target="_blank" rel="noopener noreferrer">Ver GitHub demo <span aria-hidden="true">↗</span></a>
+              <a class="button button--primary" href="https://barbercloud.netlify.app" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-external"></use></svg>Ver landing</a>
+              <a class="button button--secondary" href="https://github.com/Pietrobsn/barber-cloud-demo" target="_blank" rel="noopener noreferrer"><svg class="icon icon--brand" aria-hidden="true"><use href="#icon-github"></use></svg>GitHub demo</a>
             </footer>
           </article>
 
           <article class="project-card project-card--featured reveal reveal--pop reveal--delay-1">
             <header class="project-card__topline">
-              <span class="project-card__number mono">PROJETO 02</span>
-              <span class="status status--public">GitHub demo</span>
+              <div class="project-badges" aria-label="Categorias do projeto">
+                <span class="status status--product"><svg class="icon" aria-hidden="true"><use href="#icon-dashboard"></use></svg>Sistema operacional</span>
+                <span class="status status--demo"><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>Demo pública</span>
+              </div>
             </header>
             <div class="project-card__body">
               <p class="project-card__type mono">GESTÃO / ALIMENTAÇÃO</p>
               <h3>Comanda</h3>
-              <p class="project-card__description">Sistema para restaurantes, pizzarias e delivery, com foco em pedidos, comandas, cardápio, caixa, estoque, entregadores e operação diária.</p>
-              <p class="project-card__note">Produto comercial privado. A versão pública é apenas uma demo reduzida e segura para portfólio, sem dados reais e sem credenciais de produção.</p>
+              <p class="project-card__description">Sistema para restaurantes, pizzarias e delivery, com foco em pedidos, comandas, cardápio, caixa, estoque, entregadores e rotina operacional.</p>
+              <p class="project-card__note">Versão pública demonstrativa disponível no GitHub, criada para apresentar parte da experiência visual e operacional do sistema.</p>
             </div>
             <ul class="tech-list" aria-label="Tecnologias">
               <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Gestão de pedidos</li><li>Interface responsiva</li>
             </ul>
             <footer class="project-card__actions">
-              <a class="button button--primary" href="https://github.com/Pietrobsn/comanda-demo" target="_blank" rel="noopener noreferrer">Ver GitHub demo <span aria-hidden="true">↗</span></a>
+              <a class="button button--primary" href="https://github.com/Pietrobsn/comanda-demo" target="_blank" rel="noopener noreferrer"><svg class="icon icon--brand" aria-hidden="true"><use href="#icon-github"></use></svg>GitHub demo</a>
             </footer>
           </article>
         </div>
 
-        <div class="secondary-projects" aria-label="Outros projetos">
-          <article class="project-row reveal reveal--left">
-            <div class="project-row__identity">
-              <span class="project-card__number mono">PROJETO 03</span>
-              <div><h3>Folha Superação</h3><p>Sistema para Academia</p></div>
+        <section class="secondary-projects reveal" aria-labelledby="outros-trabalhos-title">
+          <header class="secondary-projects__header">
+            <div>
+              <p class="section-index mono">SELEÇÃO CONTÍNUA</p>
+              <h3 id="outros-trabalhos-title">Outros trabalhos e estudos</h3>
             </div>
-            <p class="project-row__description">Sistema web operacional desenvolvido para academia real, com controle de caixa, folha de pagamento, planos, relatórios e rotinas administrativas.</p>
-            <ul class="tech-list tech-list--compact" aria-label="Tecnologias">
-              <li>JavaScript</li><li>Node.js</li><li>PostgreSQL</li><li>SQL</li>
-            </ul>
-            <span class="status status--private">Código privado</span>
-          </article>
+            <p>Além dos destaques acima, também desenvolvo sistemas administrativos, APIs, dashboards e projetos de estudo voltados para web, dados e automação.</p>
+          </header>
 
-          <article class="project-row reveal reveal--right reveal--delay-1">
-            <div class="project-row__identity">
-              <span class="project-card__number mono">PROJETO 04</span>
-              <div><h3>APIForge</h3><p>Organização de APIs</p></div>
-            </div>
-            <p class="project-row__description">Projeto para criação e organização de APIs, endpoints CRUD e backends simulados. Atualmente em desenvolvimento.</p>
-            <ul class="tech-list tech-list--compact" aria-label="Tecnologias">
-              <li>JavaScript</li><li>Supabase</li><li>SQL</li><li>CRUD</li>
-            </ul>
-            <span class="status status--building">Em desenvolvimento</span>
-          </article>
-        </div>
+          <div class="work-grid">
+            <article class="work-card reveal reveal--left">
+              <span class="work-card__icon" aria-hidden="true"><svg class="icon"><use href="#icon-dashboard"></use></svg></span>
+              <div>
+                <h4>Sistema para Academia</h4>
+                <p>Controle de caixa, folha de pagamento, planos, relatórios e rotinas administrativas.</p>
+              </div>
+              <span class="status status--product">Sistema comercial</span>
+            </article>
+
+            <article class="work-card reveal reveal--left reveal--delay-1">
+              <span class="work-card__icon" aria-hidden="true"><svg class="icon"><use href="#icon-database"></use></svg></span>
+              <div>
+                <h4>APIForge</h4>
+                <p>Organização de APIs, endpoints CRUD e backends simulados para estudo e produtividade.</p>
+              </div>
+              <span class="status status--building">Em desenvolvimento</span>
+            </article>
+
+            <article class="work-card reveal reveal--right reveal--delay-2">
+              <span class="work-card__icon" aria-hidden="true"><svg class="icon"><use href="#icon-web"></use></svg></span>
+              <div>
+                <h4>Portfolio Pietro</h4>
+                <p>Portfólio público em HTML, CSS e JavaScript, com foco em apresentação profissional e performance.</p>
+              </div>
+              <span class="status status--public">Projeto público</span>
+            </article>
+          </div>
+        </section>
       </div>
     </section>
 
@@ -294,25 +364,37 @@
         </div>
 
         <div class="contact-list reveal reveal--right reveal--delay-1">
-          <a href="https://wa.me/5581982977975" target="_blank" rel="noopener noreferrer">
-            <span class="contact-list__label mono">WHATSAPP</span>
-            <strong>+55 (81) 98297-7975</strong>
-            <span aria-hidden="true">↗</span>
+          <a class="contact-card contact-card--whatsapp" href="https://wa.me/5581982977975" target="_blank" rel="noopener noreferrer">
+            <span class="contact-card__icon" aria-hidden="true"><svg class="icon"><use href="#icon-whatsapp"></use></svg></span>
+            <span class="contact-card__content">
+              <span class="contact-list__label mono">WHATSAPP</span>
+              <strong>+55 (81) 98297-7975</strong>
+            </span>
+            <span class="contact-card__arrow" aria-hidden="true"><svg class="icon"><use href="#icon-external"></use></svg></span>
           </a>
-          <a href="mailto:vitorpietro86@gmail.com">
-            <span class="contact-list__label mono">E-MAIL</span>
-            <strong>vitorpietro86@gmail.com</strong>
-            <span aria-hidden="true">↗</span>
+          <a class="contact-card contact-card--mail" href="mailto:vitorpietro86@gmail.com">
+            <span class="contact-card__icon" aria-hidden="true"><svg class="icon"><use href="#icon-mail"></use></svg></span>
+            <span class="contact-card__content">
+              <span class="contact-list__label mono">E-MAIL</span>
+              <strong>vitorpietro86@gmail.com</strong>
+            </span>
+            <span class="contact-card__arrow" aria-hidden="true"><svg class="icon"><use href="#icon-external"></use></svg></span>
           </a>
-          <a href="https://github.com/Pietrobsn" target="_blank" rel="noopener noreferrer">
-            <span class="contact-list__label mono">GITHUB</span>
-            <strong>github.com/Pietrobsn</strong>
-            <span aria-hidden="true">↗</span>
+          <a class="contact-card contact-card--github" href="https://github.com/Pietrobsn" target="_blank" rel="noopener noreferrer">
+            <span class="contact-card__icon" aria-hidden="true"><svg class="icon"><use href="#icon-github"></use></svg></span>
+            <span class="contact-card__content">
+              <span class="contact-list__label mono">GITHUB</span>
+              <strong>github.com/Pietrobsn</strong>
+            </span>
+            <span class="contact-card__arrow" aria-hidden="true"><svg class="icon"><use href="#icon-external"></use></svg></span>
           </a>
-          <a href="https://www.linkedin.com/in/vitor-pietro-4729b73b6/" target="_blank" rel="noopener noreferrer">
-            <span class="contact-list__label mono">LINKEDIN</span>
-            <strong>Vitor Pietro</strong>
-            <span aria-hidden="true">↗</span>
+          <a class="contact-card contact-card--linkedin" href="https://www.linkedin.com/in/vitor-pietro-4729b73b6/" target="_blank" rel="noopener noreferrer">
+            <span class="contact-card__icon" aria-hidden="true"><svg class="icon"><use href="#icon-linkedin"></use></svg></span>
+            <span class="contact-card__content">
+              <span class="contact-list__label mono">LINKEDIN</span>
+              <strong>Vitor Pietro</strong>
+            </span>
+            <span class="contact-card__arrow" aria-hidden="true"><svg class="icon"><use href="#icon-external"></use></svg></span>
           </a>
         </div>
       </div>
