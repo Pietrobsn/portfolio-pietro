@@ -1262,6 +1262,143 @@ a.button:hover {
   }
 }
 
+/* ══════════════════════════════════════════════════════════
+   EFEITOS VISUAIS
+═══════════════════════════════════════════════════════════ */
+
+/* Grid de fundo: deriva sutil para dar sensação de profundidade */
+@keyframes grid-drift {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(10px, 6px); }
+  66% { transform: translate(-6px, 10px); }
+}
+
+body::before {
+  animation: grid-drift 26s ease-in-out infinite;
+}
+
+/* Glows ambiente: pulso lento */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.12); }
+}
+
+.hero::after {
+  animation: pulse-glow 8s ease-in-out infinite;
+}
+
+.section--contact::after {
+  animation: pulse-glow 9s ease-in-out infinite 1s;
+}
+
+/* Constelação de partículas no hero */
+.hero__particles {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Badge de disponibilidade: dot pulsante */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 5px rgba(121, 216, 174, 0.1); }
+  50% { opacity: 0.7; transform: scale(0.85); box-shadow: 0 0 0 8px rgba(121, 216, 174, 0); }
+}
+
+.availability span {
+  animation: pulse-dot 2.2s ease-in-out infinite;
+}
+
+/* Logo: leve giro no hover */
+.nav__mark {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav__brand:hover .nav__mark {
+  transform: rotate(-4deg) scale(1.06);
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0, 0, 0.2, 1), transform 0.65s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal--delay-1 { transition-delay: 0.08s; }
+.reveal--delay-2 { transition-delay: 0.16s; }
+.reveal--delay-3 { transition-delay: 0.24s; }
+.reveal--delay-4 { transition-delay: 0.32s; }
+.reveal--delay-5 { transition-delay: 0.4s; }
+
+/* Section index: linha decorativa que cresce ao revelar */
+.section-index {
+  position: relative;
+  padding-left: 34px;
+}
+
+.section-index::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  height: 1px;
+  content: "";
+  background: var(--accent);
+  transition: width 0.6s cubic-bezier(0, 0, 0.2, 1) 0.2s;
+  transform: translateY(-50%);
+}
+
+.reveal.is-visible .section-index::before {
+  width: 24px;
+}
+
+/* Glow que segue o cursor nos cards */
+.project-card,
+.skill-group,
+.education-row,
+.contact-list a,
+.profile-summary {
+  position: relative;
+}
+
+.project-card > *,
+.skill-group > *,
+.education-row > *,
+.contact-list a > *,
+.profile-summary > * {
+  position: relative;
+  z-index: 1;
+}
+
+.project-card::after,
+.skill-group::after,
+.education-row::after,
+.contact-list a::after,
+.profile-summary::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  pointer-events: none;
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(115, 168, 255, 0.12), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover::after,
+.skill-group:hover::after,
+.education-row:hover::after,
+.contact-list a:hover::after,
+.profile-summary:hover::after {
+  opacity: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1272,5 +1409,16 @@ a.button:hover {
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero__particles {
+    display: none;
   }
 }
