@@ -49,6 +49,13 @@ Projeto em desenvolvimento para criação e organização de APIs, endpoints CRU
 
 Portfólio público em HTML, CSS e JavaScript, com foco em apresentação profissional, performance, SEO, responsividade e interações leves.
 
+### Pietro eu desenrolo
+
+Pietro eu desenrolo — landing pública de serviços para sistemas simples, automações, instalação de programas e suporte técnico, com suporte a português e italiano.
+
+- [Site](https://pietrobsn.netlify.app/)
+- [GitHub](https://github.com/Pietrobsn/pietro-eu-desenrolo)
+
 ## Como executar localmente
 
 Requisitos: Node.js 18 ou superior e npm.
@@ -76,6 +83,8 @@ npm run check
 - [Barber Cloud landing](https://barbercloud.netlify.app)
 - [Barber Cloud GitHub demo](https://github.com/Pietrobsn/barber-cloud-demo)
 - [Comanda GitHub demo](https://github.com/Pietrobsn/comanda-demo)
+- [Pietro eu desenrolo](https://pietrobsn.netlify.app/)
+- [Pietro eu desenrolo GitHub](https://github.com/Pietrobsn/pietro-eu-desenrolo)
 
 ## Aviso sobre os projetos
 

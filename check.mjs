@@ -5,6 +5,8 @@ const requiredLinks = [
   'https://barbercloud.netlify.app',
   'https://github.com/Pietrobsn/barber-cloud-demo',
   'https://github.com/Pietrobsn/comanda-demo',
+  'https://pietrobsn.netlify.app/',
+  'https://github.com/Pietrobsn/pietro-eu-desenrolo',
   'https://github.com/Pietrobsn',
   'https://www.linkedin.com/in/vitor-pietro-4729b73b6/',
   'https://wa.me/5581982977975',
